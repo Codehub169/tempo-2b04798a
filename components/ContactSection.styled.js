@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 
 export const ContactSectionWrapper = styled(motion.section)`
   padding: 6rem clamp(2rem, 10vw, 8rem) 8rem;
-  background-color: ${({ theme }) => theme.colors.secondary}; /* Soft Grey, like fine paper */
+  background-color: ${({ theme }) => theme.colors.secondary}; 
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   position: relative;
-  overflow: hidden; /* For any decorative elements */
+  overflow: hidden; 
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding: 4rem clamp(1.5rem, 5vw, 3rem) 5rem;
@@ -26,7 +26,7 @@ export const SectionTitle = styled(motion.h2)`
 export const SectionSubtitle = styled(motion.p)`
   font-family: ${({ theme }) => theme.fonts.primary};
   font-size: clamp(1rem, 1.8vw, 1.2rem);
-  color: ${({ theme }) => theme.colors.textSecondary || theme.colors.text};
+  color: ${({ theme }) => theme.colors.textSecondary};
   margin-bottom: 3rem;
   max-width: 600px;
 `;
@@ -35,13 +35,13 @@ export const FormStyled = styled(motion.form)`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 650px; /* Max width for the form */
+  max-width: 650px; 
   gap: 1.8rem;
   background-color: ${({ theme }) => theme.colors.white};
   padding: clamp(2rem, 5vw, 3.5rem);
   border-radius: ${({ theme }) => theme.borderRadius || '8px'};
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-  border: 1px solid ${({ theme }) => theme.colors.backgroundLight || '#e0e0e0'};
+  border: 1px solid ${({ theme }) => theme.colors.lightNeutral || '#e0e0e0'};
   text-align: left;
 `;
 
@@ -49,27 +49,27 @@ const inputStyles = css`
   font-family: ${({ theme }) => theme.fonts.primary};
   font-size: 1rem;
   padding: 0.9rem 1.2rem;
-  border: 1px solid ${({ theme }) => theme.colors.border || '#d3cfcf'}; /* Soft Grey or specific border color */
+  border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.borderRadius || '6px'};
-  background-color: ${({ theme }) => theme.colors.backgroundLight || '#f9f9f9'};
+  background-color: ${({ theme }) => theme.colors.lightNeutral || '#f9f9f9'};
   color: ${({ theme }) => theme.colors.text};
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
 
   &::placeholder {
-    color: ${({ theme }) => theme.colors.textPlaceholder || '#aaa'};
+    color: ${({ theme }) => theme.colors.textPlaceholder};
     opacity: 1; /* Firefox */
   }
 
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.colors.primary};
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}33; /* Subtle focus ring */
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}33; 
   }
 
   /* Styling for validation states */
   &.invalid {
-    border-color: ${({ theme }) => theme.colors.error || '#CD5C5C'};
+    border-color: ${({ theme }) => theme.colors.error};
     &:focus {
       box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.error}33;
     }
@@ -91,18 +91,18 @@ export const LabelStyled = styled.label`
   font-size: 0.9rem;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.text};
-  margin-bottom: -1rem; /* Pull up slightly above the input */
+  margin-bottom: -1rem; /* Adjusts spacing with input, pulling input closer */
   display: block;
 `;
 
 export const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.5rem; /* Base gap, modified by label's negative margin */
 `;
 
 export const ButtonStyled = styled(motion.button)`
-  font-family: ${({ theme }) => theme.fonts.secondary}; /* Poppins for a bit more personality */
+  font-family: ${({ theme }) => theme.fonts.secondary}; 
   font-size: clamp(1rem, 1.6vw, 1.1rem);
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -112,12 +112,12 @@ export const ButtonStyled = styled(motion.button)`
   border-radius: ${({ theme }) => theme.borderRadius || '6px'};
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  align-self: center; /* Center button if form is wider */
+  align-self: center; 
   margin-top: 1rem;
   box-shadow: 0 4px 15px ${({ theme }) => theme.colors.accent}4D;
 
   &:hover:not(:disabled) {
-    background: ${({ theme }) => theme.colors.accentHover || theme.colors.primary}; 
+    background: ${({ theme }) => theme.colors.accentHover};
     transform: translateY(-2px);
     box-shadow: 0 6px 20px ${({ theme }) => theme.colors.accent}66;
   }
@@ -161,7 +161,7 @@ export const SocialLink = styled.a`
   &:focus {
     color: ${({ theme }) => theme.colors.accent};
     transform: translateY(-2px);
-    text-decoration: none; /* Override global if needed */
+    text-decoration: none; 
     svg {
       fill: ${({ theme }) => theme.colors.accent};
     }
@@ -177,14 +177,14 @@ export const FormStatusMessage = styled(motion.p)`
   font-weight: 500;
 
   &.success {
-    background-color: ${({ theme }) => theme.colors.success}26; /* Light green background */
-    color: ${({ theme }) => theme.colors.successDark || '#2E7D32'}; /* Darker green text */
-    border: 1px solid ${({ theme }) => theme.colors.success || '#8FBC8F'};
+    background-color: ${({ theme }) => theme.colors.success}26; 
+    color: ${({ theme }) => theme.colors.successDark};
+    border: 1px solid ${({ theme }) => theme.colors.success};
   }
 
   &.error {
-    background-color: ${({ theme }) => theme.colors.error}26; /* Light red background */
-    color: ${({ theme }) => theme.colors.errorDark || '#B71C1C'}; /* Darker red text */
-    border: 1px solid ${({ theme }) => theme.colors.error || '#CD5C5C'};
+    background-color: ${({ theme }) => theme.colors.error}26; 
+    color: ${({ theme }) => theme.colors.errorDark};
+    border: 1px solid ${({ theme }) => theme.colors.error};
   }
 `;

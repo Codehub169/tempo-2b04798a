@@ -41,8 +41,8 @@ const GlobalStyles = createGlobalStyle`
 
   p {
     margin-bottom: 1rem;
-    font-size: ${({ theme }) => theme.fontSizes.body};
-    color: ${({ theme }) => theme.colors.textSecondary || theme.colors.text};
+    font-size: ${({ theme }) => theme.fontSizes.regular}; /* Changed from body to regular for clarity */
+    color: ${({ theme }) => theme.colors.textSecondary}; /* textSecondary is now in theme */
   }
 
   a {
@@ -52,8 +52,7 @@ const GlobalStyles = createGlobalStyle`
 
     &:hover,
     &:focus {
-      color: ${({ theme }) => theme.colors.accentHover || theme.colors.primary}; 
-      /* Assuming accentHover is defined in theme, otherwise fallback to primary */
+      color: ${({ theme }) => theme.colors.accentHover}; 
       text-decoration: underline;
       text-decoration-thickness: 1.5px;
       text-underline-offset: 3px;
@@ -82,7 +81,7 @@ const GlobalStyles = createGlobalStyle`
   /* Custom Selection Styles */
   ::selection {
     background-color: ${({ theme }) => theme.colors.accent};
-    color: ${({ theme }) => theme.colors.white || '#FFFFFF'}; 
+    color: ${({ theme }) => theme.colors.white}; 
   }
 
   /* Accessibility: Focus Visible */
@@ -103,7 +102,7 @@ const GlobalStyles = createGlobalStyle`
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.backgroundLight || '#f1f1f1'}; 
+    background: ${({ theme }) => theme.colors.lightNeutral || '#f1f1f1'}; 
   }
   ::-webkit-scrollbar-thumb {
     background: ${({ theme }) => theme.colors.primary};

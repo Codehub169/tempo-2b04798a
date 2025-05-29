@@ -2,30 +2,32 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 export const WhyHueneuSectionContainer = styled(motion.section)`
-  padding: ${({ theme }) => theme.spacing.sectionPadding} ${({ theme }) => theme.spacing.horizontalPadding};
+  padding: ${({ theme }) => theme.spacings.sectionPadding} ${({ theme }) => theme.spacings.horizontalPadding};
   background-color: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
   text-align: center;
-  overflow: hidden; // Prevents scrollbars during animations
-  min-height: 70vh; // Ensure it takes up a good portion of the screen
+  overflow: hidden; 
+  min-height: 70vh; 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding: ${({ theme }) => theme.spacing.sectionPaddingMobile} ${({ theme }) => theme.spacing.horizontalPaddingMobile};
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacings.sectionPaddingMobile} ${({ theme }) => theme.spacings.horizontalPaddingMobile};
     min-height: 60vh;
   }
 `;
 
 export const SectionTitle = styled(motion.h2)`
   font-family: ${({ theme }) => theme.fonts.secondary};
-  font-size: ${({ theme }) => theme.fontSizes.h2};
+  font-size: ${({ theme }) => theme.fontSizes.xxlarge};
+  font-weight: 600;
   color: ${({ theme }) => theme.colors.primary};
-  margin-bottom: ${({ theme }) => theme.spacing.large};
+  margin-bottom: ${({ theme }) => theme.spacings.large};
   position: relative;
   display: inline-block;
+  line-height: 1.3;
 
   &::after {
     content: '';
@@ -39,15 +41,16 @@ export const SectionTitle = styled(motion.h2)`
     border-radius: ${({ theme }) => theme.borderRadius};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    font-size: ${({ theme }) => theme.fontSizes.h2Mobile};
-    margin-bottom: ${({ theme }) => theme.spacing.medium};
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.fontSizes.xlarge};
+    margin-bottom: ${({ theme }) => theme.spacings.medium};
   }
 `;
 
 export const PoeticTextContainer = styled(motion.div)`
   max-width: 800px;
   margin: 0 auto;
+  width: 100%; // Ensures it takes up available width within parent's centering
 `;
 
 export const PoeticText = styled(motion.p)`
@@ -55,28 +58,32 @@ export const PoeticText = styled(motion.p)`
   font-size: ${({ theme }) => theme.fontSizes.large};
   line-height: 1.8;
   color: ${({ theme }) => theme.colors.textSecondary};
-  margin-bottom: ${({ theme }) => theme.spacing.medium};
+  margin-bottom: ${({ theme }) => theme.spacings.medium};
+  max-width: 700px; // Max width for the text itself
+  margin-left: auto; // Center the text block if PoeticTextContainer is wider
+  margin-right: auto; // Center the text block
+  // white-space: pre-line; // Not strictly needed with dangerouslySetInnerHTML and <br />, but harmless
   
   strong {
-    font-weight: 600; // Poppins regular is 400, semi-bold is 600
-    color: ${({ theme }) => theme.colors.primary};
+    font-weight: 600; 
+    color: ${({ theme }) => theme.colors.accent};
   }
 
   &:last-child {
     margin-bottom: 0;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    font-size: ${({ theme }) => theme.fontSizes.body};
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.fontSizes.regular};
     line-height: 1.7;
   }
 `;
 
 export const HighlightBar = styled(motion.div)`
-  width: 100px;
+  width: 80px;
   height: 5px;
   background-color: ${({ theme }) => theme.colors.accent};
-  margin: ${({ theme }) => theme.spacing.large} auto 0;
+  margin: ${({ theme }) => theme.spacings.medium} auto ${({ theme }) => theme.spacings.large};
   border-radius: ${({ theme }) => theme.borderRadius};
 `;
 
@@ -86,8 +93,8 @@ export const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.3,
-      delayChildren: 0.2,
+      staggerChildren: 0.3, // Time between each child animation starts
+      delayChildren: 0.2,   // Delay before the first child starts
     },
   },
 };
@@ -106,7 +113,7 @@ export const textVariants = {
 };
 
 export const barVariants = {
-  hidden: { scaleX: 0, opacity: 0 },
+  hidden: { scaleX: 0, opacity: 0, originX: 0.5 }, // Added originX for centered scaling
   visible: {
     scaleX: 1,
     opacity: 1,

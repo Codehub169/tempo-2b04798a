@@ -7,14 +7,14 @@ export const HeroContainer = styled(motion.section)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: ${({ theme }) => theme.spacing.lg};
+  padding: ${({ theme }) => theme.spacings.large};
   background-color: ${({ theme }) => theme.colors.background};
   text-align: center;
   position: relative;
   overflow: hidden;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing.md};
+    padding: ${({ theme }) => theme.spacings.medium};
     min-height: 90vh; // Adjust for smaller screens if logo/text needs more space
   }
 `;
@@ -24,7 +24,7 @@ export const ContentWrapper = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: ${({ theme }) => theme.spacing.md};
+  gap: ${({ theme }) => theme.spacings.medium};
   max-width: 800px;
   width: 100%;
 `;
@@ -32,14 +32,26 @@ export const ContentWrapper = styled(motion.div)`
 export const AnimatedLogoPlaceholder = styled(motion.div)`
   width: 150px;
   height: 150px;
-  /* Placeholder for AnimatedLogo.js styles */
-  /* Real logo SVG styling will be in AnimatedLogo.styled.js */
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
+  background-color: ${props => props.theme.colors.accent}33; // Example subtle background
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: ${props => props.theme.colors.primary};
+  font-family: ${props => props.theme.fonts.secondary};
+  margin-bottom: ${({ theme }) => theme.spacings.large};
+  animation: pulse 2s infinite ease-in-out;
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     width: 120px;
     height: 120px;
-    margin-bottom: ${({ theme }) => theme.spacing.md};
+    margin-bottom: ${({ theme }) => theme.spacings.medium};
   }
 `;
 
@@ -67,7 +79,7 @@ export const Tagline = styled(motion.h1)`
 export const Subtext = styled(motion.p)`
   font-family: ${({ theme }) => theme.fonts.primary};
   font-size: ${({ theme }) => theme.fontSizes.large};
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: ${({ theme }) => theme.colors.textSecondary}; /* Corrected to use textSecondary */
   line-height: 1.6;
   max-width: 600px;
   margin: 0;
